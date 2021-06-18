@@ -12,6 +12,10 @@ type FakeSchedulingV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeSchedulingV1alpha1) Queues(namespace string) v1alpha1.QueueInterface {
+	return &FakeQueues{c, namespace}
+}
+
 func (c *FakeSchedulingV1alpha1) QueueUnits(namespace string) v1alpha1.QueueUnitInterface {
 	return &FakeQueueUnits{c, namespace}
 }

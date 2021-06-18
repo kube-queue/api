@@ -23,6 +23,36 @@ import (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+type Queue struct {
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,name=metadata"`
+
+	Spec   QueueSpec   `json:"spec,omitempty" protobuf:"bytes,2,name=spec"`
+	Status QueueStatus `json:"status,omitempty" protobuf:"bytes,3,opt,name=status"`
+}
+
+// QueueSpec defines the desired state of Queue
+type QueueSpec struct {
+	// TODO
+}
+
+// QueueStatus defines the observed state of Queue
+type QueueStatus struct {
+	// TODO
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// QueueUnitList contains a list of QueueUnit
+type QueueList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata,omitempty"`
+	Items           []QueueUnit `json:"items"`
+}
+
+// +genclient
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
 type QueueUnit struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,name=metadata"`
