@@ -2,6 +2,14 @@
 
 package v1alpha1
 
+// QueueListerExpansion allows custom methods to be added to
+// QueueLister.
+type QueueListerExpansion interface{}
+
+// QueueNamespaceListerExpansion allows custom methods to be added to
+// QueueNamespaceLister.
+type QueueNamespaceListerExpansion interface{}
+
 // QueueUnitListerExpansion allows custom methods to be added to
 // QueueUnitLister.
 type QueueUnitListerExpansion interface{}
