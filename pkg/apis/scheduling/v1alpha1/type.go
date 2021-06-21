@@ -94,3 +94,8 @@ type QueueUnitList struct {
 	metav1.ListMeta `json:"metadata,omitempty"`
 	Items           []QueueUnit `json:"items"`
 }
+
+// Suspend is a flag that instructs the job operator to suspend processing this job
+const Suspend = "scheduling.x-k8s.io/suspend"
+// Placement is the scheduling result of the scheduler
+const Placement = "scheduling.x-k8s.io/placement"
