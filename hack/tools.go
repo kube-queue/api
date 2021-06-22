@@ -18,8 +18,4 @@ limitations under the License.
 // This package imports things required by build scripts, to force `go mod` to see them as dependencies
 package tools
 
-import (
-	_ "k8s.io/code-generator"
-	_ "k8s.io/kube-openapi/cmd/openapi-gen"
-	_ "k8s.io/code-generator/cmd/go-to-protobuf"
-)
+import _ "k8s.io/code-generator"
