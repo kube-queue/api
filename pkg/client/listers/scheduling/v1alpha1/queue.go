@@ -10,10 +10,8 @@ import (
 )
 
 // QueueLister helps list Queues.
-// All objects returned here must be treated as read-only.
 type QueueLister interface {
 	// List lists all Queues in the indexer.
-	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.Queue, err error)
 	// Queues returns an object that can list and get Queues.
 	Queues(namespace string) QueueNamespaceLister
@@ -44,13 +42,10 @@ func (s *queueLister) Queues(namespace string) QueueNamespaceLister {
 }
 
 // QueueNamespaceLister helps list and get Queues.
-// All objects returned here must be treated as read-only.
 type QueueNamespaceLister interface {
 	// List lists all Queues in the indexer for a given namespace.
-	// Objects returned here must be treated as read-only.
 	List(selector labels.Selector) (ret []*v1alpha1.Queue, err error)
 	// Get retrieves the Queue from the indexer for a given namespace and name.
-	// Objects returned here must be treated as read-only.
 	Get(name string) (*v1alpha1.Queue, error)
 	QueueNamespaceListerExpansion
 }

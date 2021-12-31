@@ -33,13 +33,24 @@ type Queue struct {
 
 // QueueSpec defines the desired state of Queue
 type QueueSpec struct {
-	// TODO
+	QueuePolicy         QueuePolicy    `json:"queuePolicy,omitempty" protobuf:"bytes,1,opt,name=queuePolicy`
+	Priority            *int32         `json:"priority,omitempty" protobuf:"varint,2,opt,name=priority"`
+	PriorityClassName   string         `json:"priorityClassName,omitempty" protobuf:"bytes,3,opt,name=priorityClassName"`
 }
 
 // QueueStatus defines the observed state of Queue
 type QueueStatus struct {
 	// TODO
 }
+
+// +k8s:openapi-gen=true
+// QueuePolicy defines the queueing policy for the elements in the queue
+type QueuePolicy string
+
+const (
+	QueuePolicyFIFO       QueuePolicy = "FIFO"
+	QueuePolicyPriority   QueuePolicy = "Priority"
+)
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
