@@ -97,5 +97,19 @@ type QueueUnitList struct {
 
 // Suspend is a flag that instructs the job operator to suspend processing this job
 const Suspend = "scheduling.x-k8s.io/suspend"
+
 // Placement is the scheduling result of the scheduler
 const Placement = "scheduling.x-k8s.io/placement"
+
+// JobSuspended checks if a Job should be suspended by checking whether its annotation contains key Suspend and its
+// value is set "true"
+func JobSuspended(job metav1.Object) bool {
+	const suspended = "true"
+	annotations := job.GetAnnotations()
+	if annotations != nil {
+		if val, exist := annotations[Suspend]; exist {
+			return val == suspended
+		}
+	}
+	return false
+}
