@@ -44,7 +44,7 @@ func (in *QueueList) DeepCopyInto(out *QueueList) {
 	in.ListMeta.DeepCopyInto(&out.ListMeta)
 	if in.Items != nil {
 		in, out := &in.Items, &out.Items
-		*out = make([]QueueUnit, len(*in))
+		*out = make([]Queue, len(*in))
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
