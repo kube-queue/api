@@ -33,9 +33,9 @@ type Queue struct {
 
 // QueueSpec defines the desired state of Queue
 type QueueSpec struct {
-	QueuePolicy         QueuePolicy    `json:"queuePolicy,omitempty" protobuf:"bytes,1,opt,name=queuePolicy`
-	Priority            *int32         `json:"priority,omitempty" protobuf:"varint,2,opt,name=priority"`
-	PriorityClassName   string         `json:"priorityClassName,omitempty" protobuf:"bytes,3,opt,name=priorityClassName"`
+	QueuePolicy       QueuePolicy `json:"queuePolicy,omitempty" protobuf:"bytes,1,opt,name=queuePolicy`
+	Priority          *int32      `json:"priority,omitempty" protobuf:"varint,2,opt,name=priority"`
+	PriorityClassName string      `json:"priorityClassName,omitempty" protobuf:"bytes,3,opt,name=priorityClassName"`
 }
 
 // QueueStatus defines the observed state of Queue
@@ -48,8 +48,8 @@ type QueueStatus struct {
 type QueuePolicy string
 
 const (
-	QueuePolicyFIFO       QueuePolicy = "FIFO"
-	QueuePolicyPriority   QueuePolicy = "Priority"
+	QueuePolicyFIFO     QueuePolicy = "FIFO"
+	QueuePolicyPriority QueuePolicy = "Priority"
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -83,8 +83,9 @@ type QueueUnitSpec struct {
 
 // QueueUnitStatus defines the observed state of QueueUnit
 type QueueUnitStatus struct {
-	Phase   QueueUnitPhase `json:"phase" protobuf:"bytes,1,name=phase"`
-	Message string         `json:"message,omitempty" protobuf:"bytes,2,opt,name=message"`
+	Phase          QueueUnitPhase `json:"phase" protobuf:"bytes,1,name=phase"`
+	Message        string         `json:"message,omitempty" protobuf:"bytes,2,opt,name=message"`
+	LastUpdateTime *metav1.Time   `json:"lastUpdateTime" protobuf:"bytes,3,name=lastUpdateTime"`
 }
 
 type QueueUnitPhase string

@@ -57,3 +57,6 @@ spec:
                   type: string
                 message:
                   type: string
+                lastUpdateTime:
+                  format: date-time
+                  type: string
