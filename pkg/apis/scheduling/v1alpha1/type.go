@@ -93,9 +93,10 @@ type QueueUnitPhase string
 const (
 	Enqueued     QueueUnitPhase = "Enqueued"
 	Dequeued     QueueUnitPhase = "Dequeued"
-	SchedReady   QueueUnitPhase = "SchedReady"
-	SchedSucceed QueueUnitPhase = "SchedSucceed"
-	SchedFailed  QueueUnitPhase = "SchedFailed"
+	SchedReady   QueueUnitPhase = "Running"
+	SchedSucceed QueueUnitPhase = "Succeed"
+	SchedFailed  QueueUnitPhase = "Failed"
+	Backoff      QueueUnitPhase = "TimeoutBackoff"
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
